@@ -24,9 +24,11 @@ Se definieron 4 vectores con una capacidad física máxima de 100 registros, vin
 *   `lista_cantidades[100]`: Stock físico disponible (entero).
 *   `lista_precios[100]`: Costo unitario (real).
 
-> [!IMPORTANT]
-> **Definición de Índices (Mañas del Entorno)**
+
+> [!IMPORTANT] **Definición de Índices (Mañas del Entorno)**
+> 
 > El intérprete de PSeInt bajo la configuración institucional utiliza indexación **Base-1** (los arreglos van del 1 al 100). Para evitar desbordamientos de memoria (`Error 303`), el puntero global `v_total` se incrementa inmediatamente *antes* de realizar la persistencia de un nuevo registro. Al migrar a Python/FastAPI, esta lógica se transformará nativamente a **Base-0**.
+
 
 ---
 
@@ -37,8 +39,8 @@ La arquitectura del código prioriza la integridad de los datos mediante tres ca
 ### 1. Control de Duplicidad (Unicidad del Código)
 Antes de aceptar un producto, el sistema realiza un barrido lineal del arreglo `lista_codigos`. Si el código ingresado coincide con uno existente, el registro se aborta inmediatamente.
 
-> [!WARNING]
-> **Cláusula de Guarda para Inventario Vacío**
+> [!WARNING] **Cláusula de Guarda para Inventario Vacío**
+> 
 > Ejecutar un ciclo de búsqueda `Para` desde 1 hasta `v_total` cuando el inventario no tiene elementos genera un quiebre de lógica en PSeInt. Para solucionar esto, la validación de unicidad está protegida por una condición de guarda (`Si v_total > 0 Entonces`), aislando el proceso en el primer registro.
 
 ### 2. Prevención de Stock Negativo
@@ -65,5 +67,6 @@ El menú interactivo se mantiene operativo mediante una evaluación continua de 
 ```
 
 
->[!TIP] **Optimización de Sintaxis para Perfiles Estrictos** 
+>[!IMPORTANT] **Optimización de Sintaxis para Perfiles Estrictos** 
+>
 >Para asegurar la compatibilidad total y evitar fallos de lectura, se reemplazó el comando `Segun` por condicionales `Si... Entonces` independientes y se sustituyó el operador `<>` por evaluaciones de igualdad lógica (`O`). Esto garantiza que el pseudocódigo corra sin importar qué tan estricto sea el compilador.
