@@ -21,7 +21,9 @@ creado: 2026-05-15
 
 **Gestión de Inventario** es el motor lógico central para el control eficiente de productos, stock y movimientos de almacén, estructurado bajo una arquitectura modular estricta. El proyecto separa completamente la lógica de negocio de la interfaz de usuario, permitiendo que la aplicación opere actualmente vía CLI, con la preparación arquitectónica para evolucionar a una API REST (FastAPI) en el futuro.
 
-> [!IMPORTANT] **Integración con Super Vault (Git Submodule)**
+> [!IMPORTANT] 
+> 
+> **Integración con Super Vault (Git Submodule)**
 > 
 > Este repositorio está diseñado para funcionar como un entorno independiente, pero se integra como un *Submódulo de Git* dentro de un Zettelkasten más amplio (Digital Brain). Todo el código fuente vive aquí, mientras que la configuración global del entorno de conocimiento se hereda del repositorio raíz.
 
@@ -74,7 +76,9 @@ gestion_inventario/
 ```
 
 
-> [!TIP] **Aislamiento de Entorno** 
+> [!TIP] 
+> 
+> **Aislamiento de Entorno** 
 > 
 > El archivo `.gitignore` de este submódulo incluye explícitamente el directorio `.obsidian/`. Esto previene la duplicación de configuraciones con el Super Vault principal y mantiene el repositorio de la universidad limpio de archivos de configuración locales.
 
@@ -126,6 +130,6 @@ docker-compose up --build
 
 ---
 
-> [!NOTE] **Nota ! ! !**
+> [!NOTE]
 > 
 > Este archivo es el punto de entrada oficial para revisiones de código. Para detalles arquitectónicos, diagramas o bitácoras de decisiones, referirse al directorio `/docs/`.
